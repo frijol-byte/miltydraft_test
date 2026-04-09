@@ -1,0 +1,226 @@
+{
+    "Demilitarized Zone": {
+        "id": "demilitarized_zone",
+        "name": "Demilitarized Zone",
+        "type": "cultural",
+        "description": "This planet gains a demilitarized zone. Units on this planet cannot be declared as defenders.",
+        "set": "pok"
+    },
+    "Cultural Relic Fragment": {
+        "id": "cultural_relic_fragment",
+        "name": "Cultural Relic Fragment",
+        "type": "cultural",
+        "description": "Gain 1 cultural relic fragment.",
+        "set": "pok"
+    },
+    "Freelancers": {
+        "id": "freelancers",
+        "name": "Freelancers",
+        "type": "cultural",
+        "description": "Place 1 infantry from your reinforcements on this planet.",
+        "set": "pok"
+    },
+    "Gamma Wormhole": {
+        "id": "gamma_wormhole",
+        "name": "Gamma Wormhole",
+        "type": "frontier",
+        "description": "Place a gamma wormhole token in this system.",
+        "set": "pok"
+    },
+    "Enigmatic Device": {
+        "id": "enigmatic_device",
+        "name": "Enigmatic Device",
+        "type": "frontier",
+        "description": "Gain 1 relic.",
+        "set": "pok"
+    },
+    "Ion Storm": {
+        "id": "ion_storm",
+        "name": "Ion Storm",
+        "type": "frontier",
+        "description": "Place the ion storm token in this or an adjacent system. Ships cannot use SUSTAIN DAMAGE in this system.",
+        "set": "pok"
+    },
+    "Lost Crew": {
+        "id": "lost_crew",
+        "name": "Lost Crew",
+        "type": "frontier",
+        "description": "Draw 2 action cards.",
+        "set": "pok"
+    },
+    "Merchant Station": {
+        "id": "merchant_station",
+        "name": "Merchant Station",
+        "type": "frontier",
+        "description": "Gain 2 trade goods.",
+        "set": "pok"
+    },
+    "Mirage": {
+        "id": "mirage",
+        "name": "Mirage",
+        "type": "frontier",
+        "description": "Place the Mirage token in this system as a planet with 1/2 and the cultural trait.",
+        "set": "pok"
+    },
+    "Unknown Relic Fragment": {
+        "id": "unknown_relic_fragment",
+        "name": "Unknown Relic Fragment",
+        "type": "frontier",
+        "description": "Gain 1 unknown relic fragment.",
+        "set": "pok"
+    },
+    "Core Mine": {
+        "id": "core_mine",
+        "name": "Core Mine",
+        "type": "industrial",
+        "description": "Gain 1 trade good for each planet you control that has an industrial trait.",
+        "set": "pok"
+    },
+    "Industrial Relic Fragment": {
+        "id": "industrial_relic_fragment",
+        "name": "Industrial Relic Fragment",
+        "type": "industrial",
+        "description": "Gain 1 industrial relic fragment.",
+        "set": "pok"
+    },
+    "Functioning Base": {
+        "id": "functioning_base",
+        "name": "Functioning Base",
+        "type": "hazardous",
+        "description": "Gain 1 commodity and place 1 infantry on this planet.",
+        "set": "pok"
+    },
+    "Hazardous Relic Fragment": {
+        "id": "hazardous_relic_fragment",
+        "name": "Hazardous Relic Fragment",
+        "type": "hazardous",
+        "description": "Gain 1 hazardous relic fragment.",
+        "set": "pok"
+    },
+    "Volatile Fuel Source": {
+        "id": "volatile_fuel_source",
+        "name": "Volatile Fuel Source",
+        "type": "hazardous",
+        "description": "Gain 1 command token.",
+        "set": "pok"
+    },
+    "Warfare Research Facility": {
+        "id": "warfare_research_facility",
+        "name": "Warfare Research Facility",
+        "type": "hazardous",
+        "description": "Gain 1 warfare technology that you meet the prerequisites for.",
+        "set": "pok"
+    },
+    "Lazax Survivors": {
+        "id": "lazax_survivors",
+        "name": "Lazax Survivors",
+        "type": "cultural",
+        "description": "Place 2 infantry from your reinforcements on this planet.",
+        "set": "pok"
+    },
+    "Mining World": {
+        "id": "mining_world",
+        "name": "Mining World",
+        "type": "hazardous",
+        "description": "This planet's resource value is increased by 2.",
+        "set": "pok"
+    },
+    "Rich World": {
+        "id": "rich_world",
+        "name": "Rich World",
+        "type": "industrial",
+        "description": "This planet's resource value is increased by 1.",
+        "set": "pok"
+    },
+    "Paradise World": {
+        "id": "paradise_world",
+        "name": "Paradise World",
+        "type": "cultural",
+        "description": "This planet's influence value is increased by 2.",
+        "set": "pok"
+    },
+    "Tomb of Emphidia": {
+        "id": "tomb_of_emphidia",
+        "name": "Tomb of Emphidia",
+        "type": "cultural",
+        "description": "Gain 1 relic.",
+        "set": "pok"
+    },
+    "Dyson Sphere": {
+        "id": "dyson_sphere",
+        "name": "Dyson Sphere",
+        "type": "frontier",
+        "description": "Gain 2 trade goods and draw 1 action card.",
+        "set": "pok"
+    },
+    "Local Fabricators": {
+        "id": "local_fabricators",
+        "name": "Local Fabricators",
+        "type": "industrial",
+        "description": "Place 1 mech on this planet.",
+        "set": "pok"
+    },
+    "Abandoned Warehouses": {
+        "id": "abandoned_warehouses",
+        "name": "Abandoned Warehouses",
+        "type": "industrial",
+        "description": "Gain 2 commodities.",
+        "set": "pok"
+    },
+    "Derelict Vessel": {
+        "id": "derelict_vessel",
+        "name": "Derelict Vessel",
+        "type": "frontier",
+        "description": "Draw 1 secret objective.",
+        "set": "pok"
+    },
+    "Expedition": {
+        "id": "expedition",
+        "name": "Expedition",
+        "type": "hazardous",
+        "description": "Draw 1 action card and gain 1 trade good.",
+        "set": "pok"
+    },
+    "Keleres Ship": {
+        "id": "keleres_ship",
+        "name": "Keleres Ship",
+        "type": "frontier",
+        "description": "Place 1 destroyer in this system.",
+        "set": "pok"
+    },
+    "Ancient Shipyard": {
+        "id": "ancient_shipyard",
+        "name": "Ancient Shipyard",
+        "type": "hazardous",
+        "description": "Place 1 cruiser in this system.",
+        "set": "pok"
+    },
+    "Stellar Converter": {
+        "id": "stellar_converter",
+        "name": "Stellar Converter",
+        "type": "frontier",
+        "description": "Destroy 1 non-fighter ship in an adjacent system.",
+        "set": "pok"
+    },
+    "Biotic Research Facility": {
+        "id": "biotic_research_facility",
+        "name": "Biotic Research Facility",
+        "type": "industrial",
+        "description": "Gain 1 biotic technology that you meet the prerequisites for.",
+        "set": "pok"
+    },
+    "Cybernetic Research Facility": {
+        "id": "cybernetic_research_facility",
+        "name": "Cybernetic Research Facility",
+        "type": "cultural",
+        "description": "Gain 1 cybernetic technology that you meet the prerequisites for.",
+        "set": "pok"
+    },
+    "Propulsion Research Facility": {
+        "id": "propulsion_research_facility",
+        "name": "Propulsion Research Facility",
+        "type": "cultural",
+        "description": "Gain 1 propulsion technology that you meet the prerequisites for.",
+        "set": "pok"
+    }
+}

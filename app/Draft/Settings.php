@@ -49,6 +49,8 @@ class Settings
         public ?AllianceTeamMode $allianceTeamMode = null,
         public ?AllianceTeamPosition $allianceTeamPosition = null,
         public ?bool $allianceForceDoublePicks = null,
+        public bool $includeExplorations = false,
+        public int $numberOfExplorations = 0,
     ) {
     }
 
@@ -100,6 +102,8 @@ class Settings
                 'alliance_teams_position' => $this->allianceTeamPosition->value,
                 'force_double_picks' => $this->allianceForceDoublePicks,
             ] : null,
+            'include_explorations' => $this->includeExplorations,
+            'num_explorations' => $this->numberOfExplorations,
         ];
     }
 
@@ -238,6 +242,8 @@ class Settings
             $allianceMode ? AllianceTeamMode::from($data['alliance']['alliance_teams']) : null,
             $allianceMode ? AllianceTeamPosition::from($data['alliance']['alliance_teams_position']) : null,
             $allianceMode ? (bool) $data['alliance']['force_double_picks'] : null,
+            (bool) ($data['include_explorations'] ?? false),
+            (int) ($data['num_explorations'] ?? 0),
         );
     }
 
@@ -326,6 +332,8 @@ class Settings
             $this->allianceTeamMode,
             $this->allianceTeamPosition,
             $this->allianceForceDoublePicks,
+            $this->includeExplorations,
+            $this->numberOfExplorations,
         );
 
     }

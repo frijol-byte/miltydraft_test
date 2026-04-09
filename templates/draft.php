@@ -72,6 +72,9 @@
                                     Slice: <span class="chosen-slice">?</span><br />
                                     Faction: <span class="chosen-faction">?</span><br />
                                     Position: <span class="chosen-position">?</span>
+                                    <?php if ($draft->settings->includeExplorations) : ?>
+                                        <br />Exploration: <span class="chosen-exploration">?</span>
+                                    <?php endif; ?>
                                 </p>
                                 <p class="center">
                                     <button class="claim" data-id="<?= $player->id ?>">Claim</button>
@@ -177,6 +180,25 @@
                         </div>
                     </div>
 
+                    <?php if ($draft->settings->includeExplorations && !empty($draft->explorationPool)) : ?>
+                    <div class="explorations draft-options">
+                        <h3>Exploration Events</h3>
+                        <div class="options">
+                            <?php foreach ($draft->explorationPool as $explorationId => $exploration) : ?>
+                                <div class="exploration option <?= $exploration->typeClass() ?>" data-exploration="<?= $explorationId ?>">
+                                    <div>
+                                        <span class="exploration-type-badge <?= $exploration->typeClass() ?>"><?= $exploration->typeLabel() ?></span>
+                                        <h4><?= $exploration->name ?></h4>
+                                        <p class="exploration-description"><?= $exploration->description ?></p>
+                                        <button class="draft" data-category="exploration" data-value="<?= $exploration->name ?>">Draft</button>
+                                        <span class="drafted-by" data-category="exploration" data-value="<?= $exploration->name ?>"></span>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+
                     <script>
                         window.draft = <?= json_encode($draft->toArray(false)); ?>;
                     </script>
@@ -189,6 +211,9 @@
                         <p id="regen-options">
                             <label for="shuffle_slices"><input type="checkbox" checked id="shuffle_slices" name="shuffle_slices" /> New Slices</label>
                             <label for="shuffle_factions"><input type="checkbox" checked id="shuffle_factions" name="shuffle_factions" /> New Factions</label>
+                            <?php if ($draft->settings->includeExplorations) : ?>
+                                <label for="shuffle_explorations"><input type="checkbox" checked id="shuffle_explorations" name="shuffle_explorations" /> New Explorations</label>
+                            <?php endif; ?>
                             <label for="shuffle_order"><input type="checkbox" id="shuffle_order" name="shuffle_order" /> New <?= ($draft->settings->allianceTeamMode == \App\TwilightImperium\AllianceTeamMode::RANDOM) ? 'teams and ' : '' ?>player order</label>
                             <button id="regenerate" class="btn">Regenerate</button>
                         </p>
@@ -268,6 +293,14 @@
                     <p>
                         <label>Seed:</label> <strong><?= $draft->settings->seed->getValue() ?></strong>
                     </p>
+                    <?php if ($draft->settings->includeExplorations) : ?>
+                    <p>
+                        <label>Include Explorations:</label> <strong>yes</strong>
+                    </p>
+                    <p>
+                        <label>Number of Explorations:</label> <strong><?= $draft->settings->numberOfExplorations ?></strong>
+                    </p>
+                    <?php endif; ?>
                     <p>
                         <label>Slices Generated:</label>
                         <strong>

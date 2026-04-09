@@ -28,6 +28,7 @@ class GenerateDraft implements Command
         // not going through dispatch method because if we're faking it then that sucks
         $slices = (new GenerateSlicePool($this->settings))->handle();
         $factions = (new GenerateFactionPool($this->settings))->handle();
+        $explorations = (new GenerateExplorationPool($this->settings))->handle();
 
         return new Draft(
             DraftId::generate(),
@@ -39,6 +40,7 @@ class GenerateDraft implements Command
             $factions,
             [],
             PlayerId::fromString(array_key_first($players)),
+            $explorations,
         );
     }
 

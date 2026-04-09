@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Draft;
 
+use App\TwilightImperium\Exploration;
 use App\TwilightImperium\Faction;
 use App\TwilightImperium\Tile;
 
@@ -24,6 +25,8 @@ class Draft
         /** @var array<Pick> $log */
         public array $log = [],
         public ?PlayerId $currentPlayerId = null,
+        /** @var array<Exploration> $explorationPool */
+        public array $explorationPool = [],
     ) {
     }
 
@@ -49,6 +52,7 @@ class Draft
             self::factionsFromJson($data['factions']),
             array_map(fn ($logData) => Pick::fromJson($logData), $data['draft']['log']),
             $data['draft']['current'] != null ? PlayerId::fromString($data['draft']['current']) : null,
+            self::explorationsFromJson($data['explorations'] ?? []),
         );
     }
 
@@ -81,6 +85,22 @@ class Draft
         }, $factionNames);
     }
 
+    /**
+     * @return array<Exploration>
+     */
+    private static function explorationsFromJson(array $explorationNames): array
+    {
+        if (empty($explorationNames)) {
+            return [];
+        }
+
+        $allExplorations = Exploration::all();
+
+        return array_map(function (string $name) use ($allExplorations) {
+            return $allExplorations[$name];
+        }, $explorationNames);
+    }
+
     public function toFileContent(): string
     {
         return json_encode($this->toArray(true));
@@ -99,6 +119,7 @@ class Draft
             ],
             'factions' => array_map(fn (Faction $f) => $f->name, $this->factionPool),
             'slices' => array_map(fn (Slice $s) => ['tiles' => $s->tileIds()], $this->slicePool),
+            'explorations' => array_map(fn (Exploration $e) => $e->name, $this->explorationPool),
         ];
 
         if ($includeSecrets) {
@@ -113,7 +134,9 @@ class Draft
         $doneSteps = count($this->log);
         $snakeDraft = array_merge(array_keys($this->players), array_keys(array_reverse($this->players)));
 
-        if (count($this->log) >= (count($this->players) * 3)) {
+        $picksPerPlayer = $this->settings->includeExplorations ? 4 : 3;
+
+        if (count($this->log) >= (count($this->players) * $picksPerPlayer)) {
             $this->isDone = true;
             $this->currentPlayerId = null;
         } else {

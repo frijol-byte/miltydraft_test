@@ -145,7 +145,7 @@ $(document).ready(function () {
             }
 
             $('#regenerate').on('click', function () {
-                if (!$('#shuffle_factions').is(':checked') && !$('#shuffle_slices').is(':checked') && !$('#shuffle_order').is(':checked')) {
+                if (!$('#shuffle_factions').is(':checked') && !$('#shuffle_slices').is(':checked') && !$('#shuffle_order').is(':checked') && !$('#shuffle_explorations').is(':checked')) {
                     return;
                 };
 
@@ -160,6 +160,7 @@ $(document).ready(function () {
                         'slices': $('#shuffle_slices').is(':checked'),
                         'factions': $('#shuffle_factions').is(':checked'),
                         'order': $('#shuffle_order').is(':checked'),
+                        'explorations': $('#shuffle_explorations').is(':checked'),
                     },
                     success: function (resp) {
                         if (resp.error) {
@@ -459,6 +460,9 @@ function draft_status() {
     if (current_player.slice != null) {
         $('button.draft[data-category="slice"]').hide();
     }
+    if (current_player.exploration != null) {
+        $('button.draft[data-category="exploration"]').hide();
+    }
 
     // Forcing team positions logic
     if (current_player.position == null && draft.config.alliance && draft.config.alliance["alliance_teams_position"] != 'none') {
@@ -502,14 +506,22 @@ function draft_status() {
         if (current_player.faction == null && partner.faction != null) {
             $('button.draft[data-category="position"]').hide();
             $('button.draft[data-category="slice"]').hide();
+            $('button.draft[data-category="exploration"]').hide();
         }
         if (current_player.slice == null && partner.slice != null) {
             $('button.draft[data-category="faction"]').hide();
             $('button.draft[data-category="position"]').hide();
+            $('button.draft[data-category="exploration"]').hide();
         }
         if (current_player.position == null && partner.position != null) {
             $('button.draft[data-category="faction"]').hide();
             $('button.draft[data-category="slice"]').hide();
+            $('button.draft[data-category="exploration"]').hide();
+        }
+        if (current_player.exploration == null && partner.exploration != null) {
+            $('button.draft[data-category="faction"]').hide();
+            $('button.draft[data-category="slice"]').hide();
+            $('button.draft[data-category="position"]').hide();
         }
     }
 }
@@ -559,7 +571,7 @@ function ordinal(number) {
 
 function reset_draft() {
     // Reset displayed choices
-    $(".chosen-slice, .chosen-faction, .chosen-position").html("?");
+    $(".chosen-slice, .chosen-faction, .chosen-position, .chosen-exploration").html("?");
     $('.drafted-by').html("").hide();
     $('button.draft').prop('disabled', false);
     $('.option').removeClass('picked');

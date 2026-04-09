@@ -208,6 +208,25 @@
                                     </span>
                             </div>
 
+                            <h4>Galactic Exploration Events</h4>
+                            <div class="input">
+                                <label for="include_explorations" class="check">
+                                    <input type="checkbox" name="include_explorations" id="include_explorations" /> Include Exploration Events in Draft
+                                </label>
+                                <span class="help">
+                                    Adds a fourth draftable category: galactic exploration events. Each player will draft an exploration event in addition to their faction, slice, and position.
+                                </span>
+                            </div>
+                            <div class="input" id="explorations_count_input">
+                                <label for="num_explorations">
+                                    Number of Exploration Events
+                                </label>
+                                <input type="number" id="num_explorations" name="num_explorations" value="0" min="0" max="32" />
+                                <span class="help">
+                                    Number of players + 2 is recommended. These are randomly drawn from the exploration event pool (cultural, industrial, hazardous, and frontier events).
+                                </span>
+                            </div>
+
 
                             <h4>Expansions to use:</h4>
                             <span class="help">
@@ -469,6 +488,25 @@
 
 <script src="<?= asset_url('js/vendor.js') ?>"></script>
 <script src="<?= asset_url('js/main.js') ?>"></script>
+<script>
+$(document).ready(function() {
+    function toggleExplorations() {
+        var checked = $('#include_explorations').is(':checked');
+        if (checked) {
+            $('#explorations_count_input').show();
+            if ($('#num_explorations').val() == 0) {
+                var numPlayers = parseInt($('#num_players').val()) || 6;
+                $('#num_explorations').val(numPlayers + 2);
+            }
+        } else {
+            $('#explorations_count_input').hide();
+            $('#num_explorations').val(0);
+        }
+    }
+    $('#include_explorations').on('change', toggleExplorations);
+    toggleExplorations();
+});
+</script>
 </body>
 
 </html>

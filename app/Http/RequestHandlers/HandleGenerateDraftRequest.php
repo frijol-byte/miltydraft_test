@@ -91,6 +91,8 @@ class HandleGenerateDraftRequest extends RequestHandler
             $allianceMode ? AllianceTeamMode::from($this->request->get('alliance_teams')) : null,
             $allianceMode ? AllianceTeamPosition::from($this->request->get('alliance_teams_position')) : null,
             $allianceMode ? $this->request->get('force_double_picks') == 'on' : null,
+            $this->request->get('include_explorations') == 'on',
+            (int) $this->request->get('num_explorations', 0),
         );
     }
 

@@ -18,6 +18,7 @@ class Player
         public readonly ?string $pickedFaction = null,
         public readonly ?string $pickedSlice = null,
         public readonly ?string $team = null,
+        public readonly ?string $pickedExploration = null,
     ) {
     }
 
@@ -31,6 +32,7 @@ class Player
             $playerData['faction'],
             $playerData['slice'],
             $playerData['team'] ?? null,
+            $playerData['exploration'] ?? null,
         );
     }
 
@@ -40,6 +42,8 @@ class Player
             PlayerId::generate(),
             $name,
             false,
+            null,
+            null,
             null,
             null,
             null,
@@ -56,6 +60,7 @@ class Player
             $this->pickedFaction,
             $this->pickedSlice,
             $team,
+            $this->pickedExploration,
         );
     }
 
@@ -73,6 +78,7 @@ class Player
             $this->pickedFaction,
             $this->pickedSlice,
             $this->team,
+            $this->pickedExploration,
         );
     }
 
@@ -90,6 +96,7 @@ class Player
             $this->pickedFaction,
             $this->pickedSlice,
             $this->team,
+            $this->pickedExploration,
         );
     }
 
@@ -103,6 +110,7 @@ class Player
             'faction' => $this->pickedFaction,
             'slice' => $this->pickedSlice,
             'team' => $this->team,
+            'exploration' => $this->pickedExploration,
         ];
     }
 
@@ -121,12 +129,18 @@ class Player
         return $this->pickedPosition != null;
     }
 
+    public function hasPickedExploration(): bool
+    {
+        return $this->pickedExploration != null;
+    }
+
     public function getPick(PickCategory $category): ?string
     {
         return match($category) {
             PickCategory::POSITION => $this->pickedPosition,
             PickCategory::SLICE => $this->pickedSlice,
             PickCategory::FACTION => $this->pickedFaction,
+            PickCategory::EXPLORATION => $this->pickedExploration,
         };
     }
 
@@ -136,6 +150,7 @@ class Player
             PickCategory::FACTION => $this->hasPickedFaction(),
             PickCategory::SLICE => $this->hasPickedSlice(),
             PickCategory::POSITION => $this->hasPickedPosition(),
+            PickCategory::EXPLORATION => $this->hasPickedExploration(),
         };
     }
 
@@ -153,6 +168,7 @@ class Player
             $pick->category == PickCategory::FACTION ? $pick->pickedOption : $this->pickedFaction,
             $pick->category == PickCategory::SLICE ? $pick->pickedOption : $this->pickedSlice,
             $this->team,
+            $pick->category == PickCategory::EXPLORATION ? $pick->pickedOption : $this->pickedExploration,
         );
     }
 
@@ -170,6 +186,7 @@ class Player
             $category == PickCategory::FACTION ? null : $this->pickedFaction,
             $category == PickCategory::SLICE ? null : $this->pickedSlice,
             $this->team,
+            $category == PickCategory::EXPLORATION ? null : $this->pickedExploration,
         );
     }
 }

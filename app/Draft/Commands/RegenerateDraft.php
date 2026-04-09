@@ -15,6 +15,7 @@ class RegenerateDraft implements Command
         public bool $regenerateSlices,
         public bool $regenerateFactions,
         public bool $regenerateOrder,
+        public bool $regenerateExplorations = false,
     ) {
 
     }
@@ -48,6 +49,11 @@ class RegenerateDraft implements Command
         if ($this->regenerateFactions) {
             $factions = (new GenerateFactionPool($this->draft->settings->withNewSeed($seed)))->handle();
             $this->draft->factionPool = $factions;
+        }
+
+        if ($this->regenerateExplorations) {
+            $explorations = (new GenerateExplorationPool($this->draft->settings->withNewSeed($seed)))->handle();
+            $this->draft->explorationPool = $explorations;
         }
 
         app()->repository->save($this->draft);

@@ -1591,4 +1591,80 @@ strong {
   }
 }
 
+/* Exploration Events */
+#draft .explorations .options {
+  align-items: stretch;
+}
+#draft .explorations .exploration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  width: 19%;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  border-left: 4px solid transparent;
+}
+@media (max-width: 768px) {
+  #draft .explorations .exploration {
+    width: calc(50% - 10px);
+  }
+}
+#draft .explorations .exploration:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#draft .explorations .exploration h4 {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 8px 0;
+}
+#draft .explorations .exploration .exploration-description {
+  font-size: 13px;
+  font-style: italic;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+.exploration-type-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+.exploration-type-badge.exploration-cultural {
+  background-color: #2980b9;
+}
+.exploration-type-badge.exploration-industrial {
+  background-color: #27ae60;
+}
+.exploration-type-badge.exploration-hazardous {
+  background-color: #c0392b;
+}
+.exploration-type-badge.exploration-frontier {
+  background-color: #8e44ad;
+}
+#draft .exploration.exploration-cultural {
+  border-left-color: #2980b9;
+}
+#draft .exploration.exploration-industrial {
+  border-left-color: #27ae60;
+}
+#draft .exploration.exploration-hazardous {
+  border-left-color: #c0392b;
+}
+#draft .exploration.exploration-frontier {
+  border-left-color: #8e44ad;
+}
+
+/* Exploration settings toggle in generate form */
+#explorations_count_input {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -14,6 +14,7 @@ class Seed
     private const OFFSET_SLICES = 0;
     private const OFFSET_FACTIONS = 1;
     private const OFFSET_PLAYER_ORDER = 2;
+    private const OFFSET_EXPLORATIONS = 3;
     private int $seed;
 
     public function __construct(?int $seed = null)
@@ -48,6 +49,11 @@ class Seed
     public function setForPlayerOrder(): void
     {
         mt_srand($this->seed + self::OFFSET_PLAYER_ORDER);
+    }
+
+    public function setForExplorations(): void
+    {
+        mt_srand($this->seed + self::OFFSET_EXPLORATIONS);
     }
 
     public function isValid()

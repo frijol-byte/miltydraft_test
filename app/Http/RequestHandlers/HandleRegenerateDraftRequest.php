@@ -28,6 +28,7 @@ class HandleRegenerateDraftRequest extends DraftRequestHandler
             $this->request->get('slices', false) === 'true',
             $this->request->get('factions', false) === 'true',
             $this->request->get('order', false) === 'true',
+            $this->request->get('explorations', false) === 'true',
         ));
 
         return $this->json([
